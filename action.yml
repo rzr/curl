@@ -1,0 +1,10 @@
+# YAML -*- mode: yaml; tab-width: 2; indent-tabs-mode: nil; coding: utf-8 -*-
+---
+
+name: curl-action
+
+runs:
+  using: composite
+  steps:
+    - run: curl --version
+      shell: bash
