@@ -1,0 +1,12 @@
+# YAML -*- mode: yaml; tab-width: 2; indent-tabs-mode: nil; coding: utf-8 -*-
+---
+name: check-http-status
+
+on:  # yamllint disable-line rule:truthy
+  push:
+
+jobs:
+  curl:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: rzr/curl-action@main
