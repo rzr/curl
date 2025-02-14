@@ -1,0 +1,19 @@
+# YAML -*- mode: yaml; tab-width: 2; indent-tabs-mode: nil; coding: utf-8 -*-
+---
+
+name: Check website availabilty
+
+on:  # yamllint disable-line rule:truthy
+  push:
+
+jobs:
+  check-http-status:
+    runs-on: ubuntu-latest
+    env:
+      # yamllint disable-line rule:line-length
+      URL: "https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/"
+    steps:
+      - name: Check curl exit success
+        run: |
+          set -e
+          curl --head --silent "$URL"
