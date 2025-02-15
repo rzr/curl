@@ -18,6 +18,7 @@ jobs:
       - id: url-action
         uses: rzr/url-action@devel/main
         # - run: echo "move comment just above to force upload"
+      - run: echo code="${{ steps.url-action.outputs.code }}"
 
   bypassed:
     runs-on: ubuntu-latest
