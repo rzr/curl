@@ -27,9 +27,10 @@ jobs:
   bypassed:
     runs-on: ubuntu-latest
     needs: run
-    if: ${{ needs.run.outputs.conclusion != 'success' }}
+#   if: ${{ needs.run.outputs.conclusion != 'success' }}
     steps:
       - run: |
+          echo "log: outcome=${{ needs.run.outputs.outcome }}"
           echo "log: conclusion=${{ needs.run.outputs.conclusion }}"
           echo "log: result=${{ needs.run.result }}"
           echo "log: is there a better way to trap and forward error code?"
