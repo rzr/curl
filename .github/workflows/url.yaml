@@ -6,9 +6,11 @@ on:  # yamllint disable-line rule:truthy
   push:
 
 jobs:
-  url:
+  run:
     runs-on: ubuntu-latest
     steps:
+      # warning: Please pin to latest release (not @main)
       - uses: rzr/url-action@main
+        # info: https://github.com/rzr/url-action/releases
         with:
           url: https://github.com/${{ github.repository }}
