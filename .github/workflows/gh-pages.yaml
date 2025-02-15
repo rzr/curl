@@ -16,7 +16,7 @@ jobs:
       outcome: ${{ steps.url-action.outcome }}
     steps:
       - id: url-action
-        uses: rzr/url-action@main
+        uses: rzr/url-action@devel/main
         # For first upload : Comment previous line and combine next one
       - run: >
           echo "action=${{ steps.url-action.github.action }}" ;
