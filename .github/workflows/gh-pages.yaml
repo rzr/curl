@@ -17,23 +17,18 @@ jobs:
     steps:
       - id: url-action
         uses: rzr/url-action@devel/main
-        # For first upload : Comment previous line and combine next one
-      - run: >
-          echo "action=${{ steps.url-action.github.action }}" ;
-          echo "uses=${{ steps.url-action.uses }}" ;
-          [ "${{ steps.url-action.outputs.version }}" = "main" ]
-          || echo "warning: https://github.com/marketplace/actions/url-action# pin version"
+        # - run: echo "move comment just above to force upload"
 
   bypassed:
     runs-on: ubuntu-latest
     needs: run
-#   if: ${{ needs.run.outputs.conclusion != 'success' }}
+    if: ${{ needs.run.outputs.conclusion != 'success' }}
     steps:
       - run: |
           echo "log: outcome=${{ needs.run.outputs.outcome }}"
           echo "log: conclusion=${{ needs.run.outputs.conclusion }}"
+          echo "log: code=${{ needs.run.code }}"
           echo "log: result=${{ needs.run.result }}"
-          echo "log: is there a better way to trap and forward error code?"
 
   upload:
     runs-on: ubuntu-latest
