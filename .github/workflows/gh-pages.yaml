@@ -19,8 +19,8 @@ jobs:
         uses: rzr/url-action@main
         # For first upload : Comment previous line and combine next one
       - run: >
-          echo "uses=${{ steps.url-action.uses }}"
-          echo "conclusion=$(echo ${{ steps.url-action.conclusion }})" >> $GITHUB_ENV ;
+          echo "action=${{ github.action }}" ;
+          echo "uses=${{ steps.url-action.uses }}" ;
           [ "${{ steps.url-action.outputs.version }}" = "main" ]
           || echo "warning: https://github.com/marketplace/actions/url-action# pin version"
 
