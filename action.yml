@@ -25,7 +25,7 @@ runs:
         set -x
         [[ ! "${{ github.action_ref }}" =~ "main$" ]]
         || echo "warning: https://github.com/marketplace/actions/url-action# update version" ;
-        set -x ;
+        set -x ; set +e ;
         ${{ inputs.process }} "${{ inputs.url }}" ;
         code="$?" ;
         echo "code=${code}" >> $${GITHUB_ENV} ;
