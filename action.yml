@@ -28,6 +28,6 @@ runs:
         set -x ; set +e ;
         ${{ inputs.process }} "${{ inputs.url }}" ;
         code="$?" ;
-        echo "code=${code}" >> $${GITHUB_OUTPUT} ;
+        echo "code=${code}" >> ${GITHUB_OUTPUT} ;
         exit ${code}
       shell: bash
