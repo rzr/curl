@@ -10,3 +10,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: rzr/curl-action@main
+        with:
+          url: https://github.com/${{ github.repository }}
