@@ -11,18 +11,30 @@ URL: https://github.com/rzr/url-action
 Check availability of a website
 useful to tell if gh-pages are enabled by running curl
 
+
+## URL AVAILABILITY
+
 Usage is straightforward check sample file:
 
 [.github/workflows/url.yaml](.github/workflows/url.yaml)
+
+It just probe availability of URL using curl command.
 
 if url parameter is omitted,
 then by default action will check
 if project has a github page online.
 
-An other more advanced reciepe to attempt to deploy to gh-pages:
 
-[.github/workflows/gh-pages.yml](.github/workflows/gh-pages.yml)
+## GITHUB PAGES AVAILABILITY
 
+An other more advanced recipe that attempt to deploy to gh-pages,
+
+[.github/workflows/gh-pages.yaml](.github/workflows/gh-pages.yaml)
+
+If URL of github-page is not available,
+it is assumed that gh-pages is not enabled
+then it will just bypass
+and make the workflow successful.
 
 For the record i made it to prevent deploying to gh-pages,
 when forking projects that have this feature enabled.
