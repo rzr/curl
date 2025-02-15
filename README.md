@@ -19,6 +19,9 @@ if url parameter is omitted,
 then by default action will check
 if project has a github page online.
 
+An other more advanced reciepe to attempt to deploy to gh-pages:
+
+[.github/workflows/gh-pages.yml](.github/workflows/gh-pages.yml)
 
 
 For the record i made it to prevent deploying to gh-pages,
