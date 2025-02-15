@@ -25,9 +25,9 @@ jobs:
     if: ${{ needs.run.outputs.conclusion != 'success' }}
     steps:
       - run: |
+          echo "log: code=${{ needs.run.outputs.code }}"
           echo "log: outcome=${{ needs.run.outputs.outcome }}"
           echo "log: conclusion=${{ needs.run.outputs.conclusion }}"
-          echo "log: code=${{ needs.run.code }}"
           echo "log: result=${{ needs.run.result }}"
 
   upload:
