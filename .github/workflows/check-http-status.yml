@@ -1,14 +1,14 @@
 # YAML -*- mode: yaml; tab-width: 2; indent-tabs-mode: nil; coding: utf-8 -*-
 ---
-name: check-http-status
+name: url
 
 on:  # yamllint disable-line rule:truthy
   push:
 
 jobs:
-  curl:
+  url:
     runs-on: ubuntu-latest
     steps:
-      - uses: rzr/curl-action@main
+      - uses: rzr/url-action@main
         with:
           url: https://github.com/${{ github.repository }}

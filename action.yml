@@ -1,7 +1,9 @@
 # YAML -*- mode: yaml; tab-width: 2; indent-tabs-mode: nil; coding: utf-8 -*-
 ---
 
-name: curl-action
+name: url-action
+# yamllint disable-line rule:line-length
+description: Check availability of a website useful to tell if gh-pages are enabled by running curl
 
 inputs:
   url:
