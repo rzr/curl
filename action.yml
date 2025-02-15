@@ -19,6 +19,7 @@ runs:
   steps:
     - run: |
         set -ex
+        echo "action=${{ github.action }}"
         echo "action=$${{ github.action_ref }}"
         ${{ inputs.process }} "${{ inputs.url }}"
       shell: bash
