@@ -13,6 +13,7 @@ jobs:
     continue-on-error: true
     outputs:
       conclusion: ${{ steps.url-action.conclusion }}
+      outcome: ${{ steps.url-action.outcome }}
     steps:
       - id: url-action
         uses: rzr/url-action@main
