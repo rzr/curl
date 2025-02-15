@@ -16,10 +16,13 @@ jobs:
     steps:
       - id: url-action
         uses: rzr/url-action@main
-        # For first upload : Comment next line and combine next line
-      - run: |
-          echo "conclusion=$(echo ${{ steps.url-action.conclusion }})" >> $GITHUB_ENV
-          echo "info: https://github.com/rzr/url-action/releases"
+        # For first upload : Comment previous line and combine next one
+      - run: >
+          echo "uses=${{ steps.url-action.uses }}"
+          echo "conclusion=$(echo ${{ steps.url-action.conclusion }})" >> $GITHUB_ENV ;
+          echo "outcome=$(echo ${{ steps.url-action.outcome }})" >> $GITHUB_ENV ;
+          [ ${{ steps.url-action.outputs.version }}" = "main" ]
+          || echo "warning: https://github.com/marketplace/actions/url-action# pin version"
 
   bypassed:
     runs-on: ubuntu-latest
