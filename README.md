@@ -13,7 +13,7 @@ useful to tell if gh-pages are enabled by running curl
 
 Usage is straightforward check sample file:
 
-[.github/workflows/url.yml](.github/workflows/url.yml)
+[.github/workflows/url.yaml](.github/workflows/url.yaml)
 
 if url parameter is omitted,
 then by default action will check
