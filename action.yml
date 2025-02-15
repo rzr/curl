@@ -12,7 +12,7 @@ inputs:
     default: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}
   process:
     required: false
-    default: curl # --fail --head
+    default: curl --fail --head
 
 runs:
   using: composite
@@ -20,5 +20,5 @@ runs:
     - run: |
         set -ex
         echo "action=$${{ github.action_ref }}"
-        $${{ inputs.process }} "${{ inputs.url }}"
+        ${{ inputs.process }} "${{ inputs.url }}"
       shell: bash
