@@ -13,13 +13,12 @@ jobs:
     continue-on-error: true
     outputs:
       conclusion: ${{ steps.url-action.conclusion }}
+      outcome: ${{ steps.url-action.outcome }}
+      code: ${{ steps.url-action.outputs.code }}
     steps:
       - id: url-action
         uses: rzr/url-action@main
-        # For first upload : Comment next line and combine next line
-      - run: |
-          echo "conclusion=$(echo ${{ steps.url-action.conclusion }})" >> $GITHUB_ENV
-          echo "info: https://github.com/rzr/url-action/releases"
+        # - run: echo "info: move comment to above line to force upload"
 
   bypassed:
     runs-on: ubuntu-latest
@@ -27,9 +26,10 @@ jobs:
     if: ${{ needs.run.outputs.conclusion != 'success' }}
     steps:
       - run: |
+          echo "log: code=${{ needs.run.outputs.code }}"
+          echo "log: outcome=${{ needs.run.outputs.outcome }}"
           echo "log: conclusion=${{ needs.run.outputs.conclusion }}"
           echo "log: result=${{ needs.run.result }}"
-          echo "log: is there a better way to trap and forward error code?"
 
   upload:
     runs-on: ubuntu-latest
