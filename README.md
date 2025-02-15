@@ -1,15 +1,24 @@
 # URL-ACTION #
 
 [![CI](
-https://github.com/rzr/url-action/actions/workflows/url.yml/badge.svg
+https://github.com/rzr/url-action/actions/workflows/url.yaml/badge.svg
 )](
-https://github.com/rzr/url-action/actions/workflows/url.yml
+https://github.com/rzr/url-action/actions/workflows/url.yaml
+)
+[![CI/gh-pages](
+https://github.com/rzr/url-action/actions/workflows/gh-pages.yaml/badge.svg
+)](
+https://github.com/rzr/url-action/actions/workflows/gh-pages.yaml
 )
 
 URL: https://github.com/rzr/url-action
 
 Check availability of a website
 useful to tell if gh-pages are enabled by running curl
+
+For demos, check status of open PRs:
+
+https://github.com/rzr/url-action/pulls
 
 
 ## URL AVAILABILITY
@@ -57,3 +66,6 @@ Ensure GitHub Pages has been enabled: https://github.com/.../.../settings/pages
 ## RESOURCES ##
 
 - https://github.com/marketplace/actions/url-action
+- http://rzr.github.io/url-action
+- https://github.com/actions/deploy-pages
+- https://github.com/actions/upload-pages-artifact
