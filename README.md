@@ -11,6 +11,10 @@ URL: https://github.com/rzr/url-action
 Check availability of a website
 useful to tell if gh-pages are enabled by running curl
 
+For demos, check status of open PRs:
+
+https://github.com/rzr/url-action/pulls
+
 
 ## URL AVAILABILITY
 
