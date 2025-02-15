@@ -18,5 +18,5 @@ runs:
         set -ex
         curl --version
         curl --fail --head "${{ inputs.url }}"
-        echo "# $${{ github.action }}"
+        echo "# action=$${{ github.action_ref }}"
       shell: bash
