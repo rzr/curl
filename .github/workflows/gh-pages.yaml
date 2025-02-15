@@ -21,7 +21,7 @@ jobs:
       - run: >
           echo "uses=${{ steps.url-action.uses }}"
           echo "conclusion=$(echo ${{ steps.url-action.conclusion }})" >> $GITHUB_ENV ;
-          echo "outcome=$(echo ${{ steps.url-action.outcome }})" >> $GITHUB_ENV ;
+#         echo "outcome=$(echo ${{ steps.url-action.outcome }})" >> $GITHUB_ENV ;
           [ "${{ steps.url-action.outputs.version }}" = "main" ]
           || echo "warning: https://github.com/marketplace/actions/url-action# pin version"
 
