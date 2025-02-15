@@ -10,12 +10,32 @@ inputs:
     required: false
     # yamllint disable-line rule:line-length
     default: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}
+  process:
+    required: false
+    default: curl --fail --head
+
+outputs:
+  code:
+    description: Exit code of process
+    value: ${{ steps.process.outputs.code }}
 
 runs:
   using: composite
   steps:
-    - run: |
-        set -ex
-        curl --version
-        curl --fail --head "${{ inputs.url }}"
+    - id: version
+      env:
+        action: https://github.com/marketplace/${{ github.action }}
+      if: contains( ${{ github.ref_name }}, 'main')
+      run: >
+        echo "warning: ${action} # Please update to latest"
+      shell: bash
+    - id: process
+      run: >
+        code=0 ;
+        ${{ inputs.process }} "${{ inputs.url }}" || code="$?" ;
+        echo "code=${code}" >> ${GITHUB_OUTPUT} ;
+        exit ${code}
+      shell: bash
+    - if: always()
+      run: echo "code=${{ steps.process.outputs.code }}"
       shell: bash
