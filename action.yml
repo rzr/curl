@@ -19,6 +19,9 @@ outputs:
     description: Exit code of process
     value: ${{ steps.process.outputs.code }}
 
+env:
+  action: https://github.com/marketplace/${{ github.action }}
+
 runs:
   using: composite
   steps:
@@ -27,9 +30,8 @@ runs:
         action=https://github.com/marketplace/${{ github.action }} ;
         [[ ! "${{ github.action_ref }}" =~ "main$" ]]
         || echo "warning: ${action} # update version" ;
-        set -x ; set +e ;
-        ${{ inputs.process }} "${{ inputs.url }}" ;
-        code="$?" ;
+        code=0
+        ${{ inputs.process }} "${{ inputs.url }}" || code="$?" ;
         echo "code=${code}" >> ${GITHUB_OUTPUT} ;
         exit ${code}
       shell: bash
