@@ -22,8 +22,6 @@ outputs:
 runs:
   using: composite
   steps:
-    - run: echo "log: "
-      shell: bash
     - id: process
       run: >
         action="https://github.com/marketplace/${{ github.action }}" ;
