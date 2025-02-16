@@ -25,6 +25,7 @@ runs:
     - id: check
       run: >
         action="https://github.com/marketplace/${{ github.action }}" ;
+        set +x ;
         [[ ! "${{ github.ref_name }}" =~ "main$" ]]
         || echo "warning: ${action} # update version" ;
       shell: bash
