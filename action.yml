@@ -22,16 +22,17 @@ outputs:
 runs:
   using: composite
   steps:
-    - id: process
-      run: >
+    - id: check
         action="https://github.com/marketplace/${{ github.action }}" ;
         [[ ! "${{ github.ref_name }}" =~ "main$" ]]
         || echo "warning: ${action} # update version" ;
+      shell: bash
+    - id: process
+      run: >
         code=0 ;
         ${{ inputs.process }} "${{ inputs.url }}" || code="$?" ;
         echo "code=${code}" >> ${GITHUB_OUTPUT} ;
         exit ${code}
-      shell: bash
     - if: always()
       run: echo "code=${{ steps.process.outputs.code }}"
       shell: bash
