@@ -63,9 +63,18 @@ Ensure GitHub Pages has been enabled: https://github.com/.../.../settings/pages
 ```
 
 
+## SOURCES
+
+[action.yml](action.yml)
+
+
 ## RESOURCES ##
 
 - https://github.com/marketplace/actions/url-action
 - http://rzr.github.io/url-action
 - https://github.com/actions/deploy-pages/issues/386#issuecomment-2660975641
 - https://github.com/actions/upload-pages-artifact/issues/6#issuecomment-2660978624
+- https://docs.github.com/en/actions/sharing-automations/creating-actions/creating-a-composite-action
+- https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/accessing-contextual-information-about-workflow-runs
+- https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions
+- https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/evaluate-expressions-in-workflows-and-actions
