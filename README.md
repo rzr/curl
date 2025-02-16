@@ -63,9 +63,30 @@ Ensure GitHub Pages has been enabled: https://github.com/.../.../settings/pages
 ```
 
 
+## WEBHOOKS
+
+Forward error code on to an other URL, 
+[see examples workflows](.github/workflows)
+.
+
+
+## SOURCES
+
+[action.yml](action.yml)
+
+API is intentionally not yet documented until a major version is released.
+
+
 ## RESOURCES ##
 
 - https://github.com/marketplace/actions/url-action
 - http://rzr.github.io/url-action
 - https://github.com/actions/deploy-pages/issues/386#issuecomment-2660975641
 - https://github.com/actions/upload-pages-artifact/issues/6#issuecomment-2660978624
+- https://docs.github.com/en/actions/sharing-automations/creating-actions/creating-a-composite-action
+- https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/accessing-contextual-information-about-workflow-runs
+- https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions
+- https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/evaluate-expressions-in-workflows-and-actions
+- https://www.rfc-editor.org/rfc/rfc7033
+- https://en.wikipedia.org/wiki/Webhook
+- https://github.com/standard-webhooks/standard-webhooks/
