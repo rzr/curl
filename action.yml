@@ -33,5 +33,4 @@ runs:
       shell: bash
     - name: Read output value
       if: always()
-        run: |
-          echo "=${{ steps.run.outputs.code }}"
+      run: echo "=${{ steps.run.outputs.code }}"
