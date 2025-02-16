@@ -23,11 +23,11 @@ runs:
   using: composite
   steps:
     - id: check
+      env:
+        action: "https://github.com/marketplace/${{ github.action }
       run: >
-        action="https://github.com/marketplace/${{ github.action }}" ;
-        set +x ;
         [[ ! ${{ github.ref_name }} =~ main$ ]]
-        || echo "warning: ${action} # update version" ;
+        || echo "warning: ${env.action} # update version to latest" ;
       shell: bash
     - id: process
       run: >
