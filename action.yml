@@ -10,9 +10,12 @@ inputs:
     required: false
     # yamllint disable-line rule:line-length
     default: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}
-  process:
+  cmdline:
     required: false
-    default: curl --fail --head
+    default: curl --fail --head --request "GET"
+  hook-url:
+    required: false
+    default: http://localhost/#
 
 outputs:
   code:
@@ -32,10 +35,17 @@ runs:
     - id: process
       run: >
         code=0 ;
-        ${{ inputs.process }} "${{ inputs.url }}" || code="$?" ;
+        ${{inputs.cmdline}} "${{ inputs.url }}" || code="$?" ;
         echo "code=${code}" >> ${GITHUB_OUTPUT} ;
         exit ${code}
       shell: bash
     - if: always()
-      run: echo "code=${{ steps.process.outputs.code }}"
+      run: >
+           echo "code=${{ steps.process.outputs.code }}"
+      shell: bash
+    - if: ${{always() && inputs.webhook != "" }}
+      run: >
+      payload='{ "type:" "url-action.event", "data:" { "code:"${{ steps.process.outputs.code }}" }}' ;
+      curl --fail --head --request "POST" --json "$payload"
+      || echo "warning: fail: $?"
       shell: bash
