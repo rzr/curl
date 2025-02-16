@@ -19,9 +19,6 @@ outputs:
     description: Exit code of process
     value: ${{ steps.process.outputs.code }}
 
-env:
-  action: https://github.com/marketplace/${{ github.action }}
-
 runs:
   using: composite
   steps:
