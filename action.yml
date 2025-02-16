@@ -22,15 +22,10 @@ outputs:
 runs:
   using: composite
   steps:
-    - id: print
-      run: >
-        action_head_ref="${{ github.head_ref }}" ;
-        action_ref_name="${{ github.ref_name }}" ;
-      shell: bash
     - id: process
       run: >
         action="https://github.com/marketplace/${{ github.action }}" ;
-        [[ ! "${{ github.action_ref }}" =~ "main$" ]]
+        [[ ! "${{ github.ref_name }}" =~ "main$" ]]
         || echo "warning: ${action} # update version" ;
         code=0 ;
         ${{ inputs.process }} "${{ inputs.url }}" || code="$?" ;
