@@ -24,6 +24,7 @@ runs:
   steps:
     - name: Print Action Reference
       run: echo "The action reference is: ${{ github.action_ref }}"
+      shell: bash
     - id: process
       run: >
         action="https://github.com/marketplace/${{ github.action }}" ;
