@@ -22,6 +22,8 @@ outputs:
 runs:
   using: composite
   steps:
+    - name: Print Action Reference
+      run: echo "The action reference is: ${{ github.action_ref }}"
     - id: process
       run: >
         action="https://github.com/marketplace/${{ github.action }}" ;
