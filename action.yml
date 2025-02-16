@@ -24,7 +24,7 @@ runs:
   steps:
     - id: check
       env:
-        action: "https://github.com/marketplace/${{ github.action }
+        action: https://github.com/marketplace/${{ github.action }}
       run: >
         [[ ! ${{ github.ref_name }} =~ main$ ]]
         || echo "warning: ${env.action} # update version to latest" ;
