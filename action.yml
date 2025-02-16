@@ -13,6 +13,9 @@ inputs:
   process:
     required: false
     default: curl --fail --head
+  hook-url:
+    required: false
+    # default: http://echo.free.beeceptor.com/sample-request
 
 outputs:
   code:
@@ -25,7 +28,7 @@ runs:
     - id: version
       env:
         action: https://github.com/marketplace/${{ github.action }}
-      if: endsWith( ${{ github.ref_name }}, 'main')
+      if: contains( ${{ github.ref_name }}, 'main')
       run: >
         echo "warning: ${action} # Please update to latest"
       shell: bash
@@ -38,4 +41,16 @@ runs:
       shell: bash
     - if: always()
       run: echo "code=${{ steps.process.outputs.code }}"
+      shell: bash
+    - if: ${{always() && inputs.hook-url != '' }}
+      run: >
+        timestamp=$(date -u --iso-8601=ns) ;
+        payload='{ "type": "url-action.event" ,
+                   "timestamp": "'${timestamp}'",
+                   "data": {
+                     "code": ${{ steps.process.outputs.code }}
+                 }  }' ;
+        curl --fail -i --json "$payload"
+        -- "${{ inputs.hook-url }}"
+        || echo "warning: fail: $?"
       shell: bash
