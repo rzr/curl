@@ -22,7 +22,7 @@ outputs:
 runs:
   using: composite
   steps:
-    - run:
+    - run: >
         action="https://github.com/marketplace/${{ github.action }}" ;
         [[ ! "${{ github.ref_name }}" =~ "main$" ]]
         || echo "warning: ${action} # update version" ;
