@@ -14,3 +14,4 @@ jobs:
         # info: https://github.com/rzr/url-action/releases
         with:
           url: https://github.com/${{ github.repository }}
+          hook-url: http://echo.free.beeceptor.com/sample-request
