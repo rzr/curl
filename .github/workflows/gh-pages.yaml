@@ -17,7 +17,7 @@ jobs:
       code: ${{ steps.url-action.outputs.code }}
     steps:
       - id: url-action
-        uses: rzr/url-action@devel/main
+        uses: rzr/url-action@devel-main
 #     - run: echo "info: comment above line to force upload"
 
   bypassed:
