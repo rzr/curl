@@ -26,7 +26,7 @@ runs:
       run: >
         action="https://github.com/marketplace/${{ github.action }}" ;
         set +x ;
-        [[ ! "${{ github.ref_name }}" =~ "main$" ]]
+        [[ ! ${{ github.ref_name }} =~ main$ ]]
         || echo "warning: ${action} # update version" ;
       shell: bash
     - id: process
