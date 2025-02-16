@@ -43,9 +43,12 @@ runs:
       run: >
            echo "code=${{ steps.process.outputs.code }}"
       shell: bash
-    - if: ${{always() && inputs.webhook != "" }}
+    - if: ${{always() && inputs.hook-url != "" }}
       run: >
       payload='{ "type:" "url-action.event", "data:" { "code:"${{ steps.process.outputs.code }}" }}' ;
-      curl --fail --head --request "POST" --json "$payload"
+      curl --fail --head
+      --request "POST"
+      --json "$payload"
+      "${{ inputs.hook-url }}"
       || echo "warning: fail: $?"
       shell: bash
