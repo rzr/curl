@@ -29,7 +29,7 @@ runs:
       run: >
         set +x ;
         [[ ! "${{ github.action_ref }}" =~ "main$" ]]
-        || echo "warning: $action # update version" ;
+        || echo "warning: ${{env.action}} # update version" ;
         set -x ; set +e ;
         ${{ inputs.process }} "${{ inputs.url }}" ;
         code="$?" ;
