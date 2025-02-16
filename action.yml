@@ -31,3 +31,7 @@ runs:
         echo "code=${code}" >> ${GITHUB_OUTPUT} ;
         exit ${code}
       shell: bash
+    - name: Read output value
+      if: always()
+        run: |
+          echo "=${{ steps.run.outputs.code }}"
