@@ -24,7 +24,8 @@ runs:
   steps:
     - id: print
       run: >
-        action_ref="${{ github.action_ref }}" ;
+        action_head_ref="${{ github.head_ref }}" ;
+        action_ref_name="${{ github.ref_name }}" ;
       shell: bash
     - id: process
       run: >
