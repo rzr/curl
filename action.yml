@@ -20,7 +20,7 @@ outputs:
     value: ${{ steps.process.outputs.code }}
 
 env:
-  action: https://github.com/marketplace/$${github.action}}
+  action: https://github.com/marketplace/${{ github.action }}
 
 runs:
   using: composite
@@ -29,7 +29,7 @@ runs:
       run: >
         set +x ;
         [[ ! "${{ github.action_ref }}" =~ "main$" ]]
-        || echo "warning: ${{env.action}} # update version" ;
+        || echo "warning: ${{action}} # update version" ;
         set -x ; set +e ;
         ${{ inputs.process }} "${{ inputs.url }}" ;
         code="$?" ;
