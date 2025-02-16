@@ -45,10 +45,10 @@ runs:
       shell: bash
     - if: ${{always() && inputs.hook-url != "" }}
       run: >
-      payload='{ "type:" "url-action.event", "data:" { "code:"${{ steps.process.outputs.code }}" }}' ;
-      curl --fail --head
-      --request "POST"
-      --json "$payload"
-      "${{ inputs.hook-url }}"
-      || echo "warning: fail: $?"
+        payload='{ "type:" "url-action.event", "data:" { "code:"${{ steps.process.outputs.code }}" }}' ;
+        curl --fail --head
+        --request "POST"
+        --json "$payload"
+        "${{ inputs.hook-url }}"
+        || echo "warning: fail: $?"
       shell: bash
