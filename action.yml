@@ -27,7 +27,7 @@ runs:
   steps:
     - id: process
       run: >
-        action=https://github.com/marketplace/${{ github.action }} ;
+        action="https://github.com/marketplace/${{ github.action }}" ;
         [[ ! "${{ github.action_ref }}" =~ "main$" ]]
         || echo "warning: ${action} # update version" ;
         code=0
