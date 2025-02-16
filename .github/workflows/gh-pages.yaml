@@ -14,12 +14,13 @@ jobs:
     outputs:
       conclusion: ${{ steps.url-action.conclusion }}
       outcome: ${{ steps.url-action.outcome }}
-      code: ${{ steps.url-action.code }}
+      code: ${{ steps.outputs.code }}
     steps:
       - id: url-action
         uses: rzr/url-action@devel/main
         # - run: echo "move comment just above to force upload"
-      - run: echo code="${{ steps.url-action.outputs.code }} >> ${GITHUB_OUTPUT}"
+      - id: outputs
+        run: echo code="${{ steps.url-action.outputs.code }} >> ${GITHUB_OUTPUT}"
 
   bypassed:
     runs-on: ubuntu-latest
