@@ -22,7 +22,7 @@ outputs:
 runs:
   using: composite
   steps:
-    - run: echo "The action reference is: ${{ github.action }}"
+    - run: echo "log: "
       shell: bash
     - id: process
       run: >
