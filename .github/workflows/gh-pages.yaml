@@ -18,12 +18,12 @@ jobs:
     steps:
       - id: url-action
         uses: rzr/url-action@devel/main
-        # - run: echo "move comment just above to force upload"
+#     - run: echo "info: comment above line to force upload"
 
   bypassed:
     runs-on: ubuntu-latest
     needs: run
-#   if: ${{ needs.run.outputs.conclusion != 'success' }}
+    if: ${{ needs.run.outputs.conclusion != 'success' }}
     steps:
       - run: |
           echo "log: code=${{ needs.run.outputs.code }}"
