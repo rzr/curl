@@ -26,7 +26,8 @@ runs:
       env:
         action: https://github.com/marketplace/${{ github.action }}
       if: contains( ${{ github.ref_name }}, 'main')
-      run: echo "warning: ${env.action}} # update version to latest"
+      run: >
+        echo "warning: ${action} update version to latest"
       shell: bash
     - id: process
       run: >
