@@ -16,12 +16,13 @@ inputs:
 
 outputs:
   code:
-    value: ${{ steps.run.outputs.code }}
+    description: Exit code of process
+    value: ${{ steps.process.outputs.code }}
 
 runs:
   using: composite
   steps:
-    - id: run
+    - id: process
       run: >
         set -x
         [[ ! "${{ github.action_ref }}" =~ "main$" ]]
@@ -33,5 +34,5 @@ runs:
         exit ${code}
       shell: bash
     - if: always()
-      run: echo "=${{ steps.run.outputs.code }}"
+      run: echo "code=${{ steps.process.outputs.code }}"
       shell: bash
