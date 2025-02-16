@@ -34,6 +34,7 @@ runs:
         ${{ inputs.process }} "${{ inputs.url }}" || code="$?" ;
         echo "code=${code}" >> ${GITHUB_OUTPUT} ;
         exit ${code}
+      shell: bash
     - if: always()
       run: echo "code=${{ steps.process.outputs.code }}"
       shell: bash
