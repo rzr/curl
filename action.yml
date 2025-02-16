@@ -22,12 +22,11 @@ outputs:
 runs:
   using: composite
   steps:
-    - id: check
+    - id: version
       env:
         action: https://github.com/marketplace/${{ github.action }}
-      run: >
-        [[ ! ${{ github.ref_name }} =~ main$ ]]
-        || echo "warning: ${env.action} # update version to latest" ;
+      if: contains( ${{ github.ref_name }}, 'main')
+      run: echo "warning: ${env.action} # update version to latest" ;
       shell: bash
     - id: process
       run: >
