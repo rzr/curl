@@ -22,8 +22,7 @@ outputs:
 runs:
   using: composite
   steps:
-    - name: Print Action Reference
-      run: echo "The action reference is: ${{ github.action }}"
+    - run: echo "The action reference is: ${{ github.action }}"
       shell: bash
     - id: process
       run: >
